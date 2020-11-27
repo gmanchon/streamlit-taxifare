@@ -25,14 +25,18 @@ passenger_count = st.number_input('passenger_count', min_value=1, max_value=8, s
 url = 'https://taxifaremodelapi.herokuapp.com/predict_fare'
 
 params = dict(
-    key = key,
-    pickup_datetime = pickup_datetime,
-    pickup_longitude = pickup_longitude,
-    pickup_latitude = pickup_latitude,
-    dropoff_longitude = dropoff_longitude,
-    dropoff_latitude = dropoff_latitude,
-    passenger_count = passenger_count)
+    key=key,
+    pickup_datetime=pickup_datetime,
+    pickup_longitude=pickup_longitude,
+    pickup_latitude=pickup_latitude,
+    dropoff_longitude=dropoff_longitude,
+    dropoff_latitude=dropoff_latitude,
+    passenger_count=passenger_count)
 
 response = requests.get(url, params=params)
 
-response.content
+prediction = response.json()
+
+pred = prediction['prediction']
+
+pred
